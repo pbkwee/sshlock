@@ -64,8 +64,8 @@ SSHAGENT=/usr/bin/ssh-agent
   SSHAGENTARGS="-s"
   if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
     eval 
-    echo "Creating an aget "
-    trap "kill  && echo killing agent $SSH_AGENT_PID" 0
+    echo "Creating an agent $SSH_AGENT_PID"
+    trap "kill $SSH_AGENT_PID && echo killing agent $SSH_AGENT_PID" 0
   fi
   # add a passwordless private key file
   ssh-add -l | grep -qai 'somekeyname' || ssh-add somekey.private.key
