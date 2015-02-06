@@ -62,10 +62,10 @@ If you are scripting this, then you will likely need an ssh-agent and keys.  Run
 ```
 SSHAGENT=/usr/bin/ssh-agent
   SSHAGENTARGS="-s"
-  if [ -z "/private/tmp/com.apple.launchd.NcipAMBTkv/Listeners" -a -x "" ]; then
+  if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
     eval 
     echo "Creating an aget "
-    trap "kill  && echo killing agent " 0
+    trap "kill  && echo killing agent $SSH_AGENT_PID" 0
   fi
   # add a passwordless private key file
   ssh-add -l | grep -qai 'somekeyname' || ssh-add somekey.private.key
