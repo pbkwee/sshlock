@@ -22,7 +22,7 @@ Usage: sshlock.sh --remotecommand 'ssh remotehost'
 ```
 # reading when no prior lock exists
 [root@hosta xen]# sshlock.sh --remotecommand 'ssh hostb'  --file /tmp/foo read
-Readlock: ssh host987:/tmp/foo:No file: /tmp/foo
+Readlock: ssh hostb:/tmp/foo:No file: /tmp/foo
 
 [root@hosta xen]# sshlock.sh --remotecommand 'ssh hostb'  --file /tmp/foo \
   acquire --key 'secret'
