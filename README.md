@@ -63,7 +63,7 @@ If you are scripting this, then you will likely need an ssh-agent and keys.  Run
 SSHAGENT=/usr/bin/ssh-agent
   SSHAGENTARGS="-s"
   if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
-    eval 
+    eval $($SSHAGENT $SSHAGENTARGS)
     echo "Creating an agent $SSH_AGENT_PID"
     trap "kill $SSH_AGENT_PID && echo killing agent $SSH_AGENT_PID" 0
   fi
